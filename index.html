@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>時鐘</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<svg viewbox="0,0,1280,800" preserveAspectRatio="xMidYMid meet">
+  <rect x="0" y="0" width="1280" height="800" fill="#293b29"/>
+  <rect x="465" y="225" rx="50" ry="50" width="350" height="350" fill="#3d5a45"/>
+  <circle cx="640" cy="400" r="160" stroke="#212f0a" stroke-width="4" fill="#293b29"/>
+  <circle cx="640" cy="400" r="120" stroke="white" stroke-width="4" stroke-dasharray="1,11.56" fill="none"/>
+  <circle cx="640" cy="400" r="120" stroke="orange" stroke-width="12" stroke-dasharray="2,60.8" fill="none"/>
+  <g class="words">
+    <text x="635" y="400" fill="white" transform="translate(50, -85)">1</text>
+    <text x="635" y="400" fill="white" transform="translate(90, -45)">2</text>
+    <text x="635" y="400" fill="white" transform="translate(105, 5)">3</text>
+    <text x="635" y="400" fill="white" transform="translate(90, 55)">4</text>
+    <text x="635" y="400" fill="white" transform="translate(50, 95)">5</text>
+    <text x="635" y="400" fill="white" transform="translate(0, 105)">6</text>
+    <text x="635" y="400" fill="white" transform="translate(-50, 95)">7</text>
+    <text x="635" y="400" fill="white" transform="translate(-90, 55)">8</text>
+    <text x="635" y="400" fill="white" transform="translate(-105, 5)">9</text>
+    <text x="635" y="400" fill="white" transform="translate(-90, -45)">10</text>
+    <text x="635" y="400" fill="white" transform="translate(-50, -85)">11</text>
+    <text x="635" y="400" fill="white" transform="translate(0, -100)">12</text>
+    <text x="635" y="400" fill="white" transform="translate(70, -115)">13</text>
+    <text x="635" y="400" fill="white" transform="translate(120, -60)">14</text>
+    <text x="635" y="400" fill="white" transform="translate(140, 5)">15</text>
+    <text x="635" y="400" fill="white" transform="translate(120, 70)">16</text>
+    <text x="635" y="400" fill="white" transform="translate(70, 125)">17</text>
+    <text x="635" y="400" fill="white" transform="translate(0, 145)">18</text>
+    <text x="635" y="400" fill="white" transform="translate(-70, 125)">19</text>
+    <text x="635" y="400" fill="white" transform="translate(-125, 70)">20</text>
+    <text x="635" y="400" fill="white" transform="translate(-140, 5)">21</text>
+    <text x="635" y="400" fill="white" transform="translate(-123, -65)">22</text>
+    <text x="635" y="400" fill="white" transform="translate(-75, -115)">23</text>
+    <text x="635" y="400" fill="white" transform="translate(0, -135)">24</text>
+  </g>
+  
+  <path id="hourbar" d="M640 400 L640 330" stroke="white" stroke-width="8" transform="rotate(0,640,400)"/>
+  <path id="minutebar" d="M640 400 L640 300" stroke="#ff7602" stroke-width="8" stroke-linecap="round" transform="rotate(0,640,400)"/>
+  <path id="secondbar" d="M640 420 L640 300" stroke="#b1ff01" transform="rotate(0,640,400)"/>
+  <circle cx="640" cy="400" r="3" fill="white"/>
+  
+  
+  
+</svg>
+</body>
+
+<script>
+  
+  var hour = document.querySelector("#hourbar")
+  var minute = document.querySelector("#minutebar")
+  var second = document.querySelector("#secondbar")
+  
+  
+
+  window.setInterval(function(){
+    var D = new Date()
+    var h,m,s = ''
+    h = D.getHours()
+    m = D.getMinutes()
+    s = D.getSeconds()
+    
+    degree_h = (h*30)
+    degree_m = (m*6)
+    degree_s = (s*6)
+    hour.setAttribute("transform", `rotate(${degree_h},640,400)`)
+    minute.setAttribute("transform", `rotate(${degree_m},640,400)`)
+    second.setAttribute("transform", `rotate(${degree_s},640,400)`)
+    console.log(h, m, s);
+    
+    
+  },1000)
+  
+  
+  //console.log(Date.getHours(), Date.getMinutes(),Date.getSeconds() );
+
+  
+
+  
+</script>
